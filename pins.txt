@@ -1,0 +1,18 @@
+RTC
+    SCL     5
+    SDA     6
+
+Display
+    CLK     3
+    DIO     4
+
+Buttons & LED
+    B1      7
+    B2      8
+    B3      9
+    B4     10
+    LR     11
+    LG     12
+
+Relay
+    R1     13
