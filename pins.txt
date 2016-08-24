@@ -1,6 +1,6 @@
 RTC
-    SCL     5
-    SDA     6
+    SCL     A3
+    SDA     A4
 
 Display
     CLK     3
@@ -15,4 +15,4 @@ Buttons & LED
     LG     12
 
 Relay
-    R1     13
+    R1     6
