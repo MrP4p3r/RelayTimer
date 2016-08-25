@@ -19,9 +19,7 @@ State::State()
 
 State* State::execute()
 {
-  Serial.println("execute() 1");
   this->setup();
-  Serial.println("execute() 2");
   return this->loop();
 }
 

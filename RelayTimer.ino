@@ -1,3 +1,5 @@
+#include <TimerOne.h>
+
 #include <RtcDS3231.h>
 #include <TM1637Display.h>
 
@@ -14,27 +16,18 @@ RtcDS3231 Rtc;
 void displayTime(const RtcDateTime& dt);
 void printDateTime(const RtcDateTime& dt);
 
+void kb_update() { kb.update(); }
+
 class StateClock : public State
 {
   private:
 
     // SETUP FUNCTION
-    void setup()
-    {
-      Serial.println("setup()");
-      delay(1000);
-      Rtc.Begin();
-
-      RtcDateTime A = RtcDateTime(__DATE__, __TIME__);
-      displayTime(A);
-
-      delay(3000);
-    }
+    void setup() {}
 
     // LOOP FUNCTION
     State* loop()
     {
-      Serial.println("loop()");
       for (;;)
       {
         RtcDateTime A = Rtc.GetDateTime();
@@ -43,15 +36,23 @@ class StateClock : public State
       }
     }
 
+    static void b0action()
+    {
+      kb.led_green->inv();
+    }
+
 };
 
 void setup()
 {
   // Setup
   Serial.begin(9600);
+  Rtc.Begin();
   while (!Serial);
 
   Serial.println("Hello!");
+  Timer1.initialize(10000);
+  Timer1.attachInterrupt(kb_update);
 
   // Вызов главного цикла
   StateController::loop(&StateClock());

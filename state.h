@@ -33,7 +33,7 @@
 class State
 {
   public:
-    State();
+    virtual State();
     virtual State* execute();
   
   private:

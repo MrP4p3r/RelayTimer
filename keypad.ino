@@ -15,8 +15,6 @@ Keypad::Keypad(int _b1_pin, int _b2_pin, int _b3_pin, int _b4_pin, int _led_red_
 
   led_red   = new Sig(_led_red_pin, LOW);
   led_green = new Sig(_led_green_pin, LOW);
-
-  
 }
 
 void Keypad::update()

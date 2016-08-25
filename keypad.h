@@ -39,9 +39,6 @@ class Keypad
     Button *buttons[4];
     Sig *led_green;
     Sig *led_red;
-
-  private:
-    
 };
 
 #endif
