@@ -27,7 +27,7 @@ void setup()
   while (!Serial);
 
   Serial.println("Hello!");
-  Timer1.initialize(10000);
+  Timer1.initialize(15000);
   Timer1.attachInterrupt(kb_update);
 
   // Вызов главного цикла
