@@ -35,14 +35,14 @@ class State
   public:
     virtual State();
     virtual State* execute();
-  
-  private:
-    virtual void setup() {};
-    virtual State* loop() {};
     static void b0action() {};
     static void b1action() {};
     static void b2action() {};
     static void b3action() {};
+  
+  private:
+    virtual void setup() {};
+    virtual State* loop() {};
 };
 
 #endif

@@ -15,33 +15,9 @@ RtcDS3231 Rtc;
 
 void displayTime(const RtcDateTime& dt);
 void printDateTime(const RtcDateTime& dt);
-
 void kb_update() { kb.update(); }
 
-class StateClock : public State
-{
-  private:
-
-    // SETUP FUNCTION
-    void setup() {}
-
-    // LOOP FUNCTION
-    State* loop()
-    {
-      for (;;)
-      {
-        RtcDateTime A = Rtc.GetDateTime();
-        displayTime(A);
-        delay(100);
-      }
-    }
-
-    static void b0action()
-    {
-      kb.led_green->inv();
-    }
-
-};
+#include "StateClock.h"
 
 void setup()
 {
