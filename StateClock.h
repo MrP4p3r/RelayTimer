@@ -5,7 +5,7 @@ class StateClock : public State
 {
   public:
   
-    StateClock::StateClock()
+    StateClock()
     {
       kb.buttons[0]->onButtonDown(this->b0action);
       kb.buttons[1]->onButtonDown(this->b1action);
