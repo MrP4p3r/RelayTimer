@@ -66,14 +66,18 @@ int Keypad::keyIsUp()
 int Keypad::getch()
 {
   while (!keyDownBuffer);
-  return keyDownBuffer;
+  int res = keyDownBuffer;
+  keyDownBuffer = NULL;
+  return res;
 }
 
 
 int Keypad::getchUp()
 {
   while (!keyUpBuffer);
-  return keyUpBuffer;
+  int res = keyUpBuffer;
+  keyUpBuffer = NULL;
+  return res;
 }
 
 void Keypad::update()
