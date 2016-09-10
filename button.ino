@@ -13,8 +13,16 @@ void Button::update()
     {
       state = !state;
       counter = 0;
-      if (state) if (onDown) onDown();
-      if (!state) if (onUp) onUp();
+      if (state)
+      {
+        if (onDown) onDown();
+        else if (onDownArg) onDownArg(argDown);
+      }
+      if (!state)
+      {
+        if (onUp) onUp();
+        else if (onUpArg) onUpArg(argUp);
+      }
     }
   } else counter = 0;
 }

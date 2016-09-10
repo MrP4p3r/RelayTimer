@@ -39,8 +39,10 @@ class Button
 
     void setActiveLevel(int _level)      { level   = _level;   };
     void setDebounceClocks(int _nclocks) { nclocks = _nclocks; };
-    void onButtonDown(void (*_foo)())    { onDown  = _foo;     };
-    void onButtonUp(void (*_foo)())      { onUp    = _foo;     };
+    void onButtonDown(void (*_foo)())    { onDown  = _foo; onDownArg = NULL; };
+    void onButtonUp(void (*_foo)())      { onUp    = _foo; onUpArg   = NULL; };
+    void onButtonDown(void (*_foo)(int), int _arg) { onDownArg = _foo; argDown = _arg; onDown = NULL; };
+    void onButtonUp(void (*_foo)(int), int _arg)   { onUpArg   = _foo; argUp   = _arg; onUp   = NULL; };
     
     void update();
 
@@ -54,6 +56,12 @@ class Button
 
     void (*onDown)();
     void (*onUp)();
+
+    void (*onDownArg)(int);
+    void (*onUpArg)(int);
+    
+    int argDown = 0;
+    int argUp = 0;
 };
 
 #endif

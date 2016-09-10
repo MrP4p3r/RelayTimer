@@ -10,15 +10,21 @@
  *    );
  *    
  *    void foo1(){
- *      k->led_green->switch();
+ *      k.ledGreen()->on();
  *    }
  *    
- *    void setup(){
- *      k->buttons[0]->onButtonDown(foo1);
+ *    void foo2(){
+ *      k.ledGreen()->off();
  *    }
+ *    
+ *    void setup(){ }
  *    
  *    void loop(){
- *      k->update();
+ *      if (k.keyIsDown())
+ *        switch (k.getch()) {
+ *          case 2: foo1();
+ *          default: foo2();
+ *        }
  *    }
  */
 
@@ -31,14 +37,38 @@
 class Keypad
 {
   public:
+
+    static void update();
+    static Keypad* instance(int _b1_pin, int _b2_pin, int _b3_pin, int _b4_pin, int _led_red_pin, int _led_green_pin);
+    static Keypad* instance();
+
+    // Получить указатель на индикаторы
+    Sig* ledGreen() { return Keypad::led_green; };
+    Sig* ledRed() { return Keypad::led_red; };
+
+    // Методы для проверки нажатий/отжатий
+    int keyIsDown();
+    int keyIsUp();
+    int getch();
+    int getchUp();
   
+  private:
+    // Конструктор и статический указатель на экземпляр класса (Keypad - синглтон)
     Keypad(int _b1_pin, int _b2_pin, int _b3_pin, int _b4_pin, int _led_red_pin, int _led_green_pin);
+    static Keypad* _instance;
 
-    void update();
-
+    // Кнопки и индикаторы клавиатуры
     Button *buttons[4];
     Sig *led_green;
     Sig *led_red;
+
+    // Callback для нажатия/отжатия кнопки
+    static void keyDown(int a);
+    static void keyUp(int a);
+
+    // Кнопки, нажатая/отжатая в данный момент времени (или NULL)
+    int keyDownBuffer;
+    int keyUpBuffer;
 };
 
 #endif

@@ -20,9 +20,6 @@
  *     return NULL;
  *   }
  * 
- * Дополнительно можно описать функции для четырех кнопок
- * клавиатуры, описанной в "keypad.h".
- * 
  * Для корректной работы контроллера состояний (statectl.h)
  * метод loop() должен возвращать указатель на следующее состояние (или NULL).
  */
@@ -33,12 +30,8 @@
 class State
 {
   public:
-    virtual State();
+    State() {};
     virtual State* execute();
-    static void b0action() {};
-    static void b1action() {};
-    static void b2action() {};
-    static void b3action() {};
   
   private:
     virtual void setup() {};

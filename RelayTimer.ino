@@ -8,7 +8,7 @@
 #include "state.h"
 #include "statectl.h"
 
-Keypad kb(7, 8, 9, 10, 11, 12);
+Keypad kb = *Keypad::instance(7, 8, 9, 10, 11, 12);
 Sig relay(6, HIGH);
 TM1637Display display(3, 4);
 RtcDS3231 Rtc;
