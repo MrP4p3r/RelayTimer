@@ -1,24 +1,24 @@
 /*
  * Модуль содержит класс-клавиатуру с двумя светодиодами (общий анод) и
- * четырьмя кнопками (активны по низкому уровню). 
- * 
+ * четырьмя кнопками (активны по низкому уровню).
+ *
  * Типичное использование:
- *    
+ *
  *    Keyboard* k = Keyboard(
  *      BUTTON1_PIN, BUTTON2_PIN, BUTTON3_PIN, BUTTON4_PIN,
  *      LED_RED_PIN, LED_GREEN_PIN
  *    );
- *    
+ *
  *    void foo1(){
  *      k.ledGreen()->on();
  *    }
- *    
+ *
  *    void foo2(){
  *      k.ledGreen()->off();
  *    }
- *    
+ *
  *    void setup(){ }
- *    
+ *
  *    void loop(){
  *      if (k.keyIsDown())
  *        switch (k.getch()) {
@@ -51,7 +51,7 @@ class Keypad
     int keyIsUp();
     int getch();
     int getchUp();
-  
+
   private:
     // Конструктор и статический указатель на экземпляр класса (Keypad - синглтон)
     Keypad(int _b1_pin, int _b2_pin, int _b3_pin, int _b4_pin, int _led_red_pin, int _led_green_pin);

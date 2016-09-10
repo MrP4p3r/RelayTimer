@@ -9,7 +9,7 @@ class StateClock : public State
 
     State* nextState;
     byte hideDisplay;
-  
+
   public:
 
     StateClock(): nextState(0) {};
@@ -28,7 +28,7 @@ class StateClock : public State
     {
       hideDisplay ^= 1;
     }
-    
+
   private:
 
     // SETUP FUNCTION

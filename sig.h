@@ -21,21 +21,20 @@
 class Sig
 {
   public:
-  
+
     Sig(int _pin, int _level):
       pin(_pin), level(_level) { pinMode(pin, OUTPUT); digitalWrite(pin, !level); };
 
     void on();
     void off();
     void inv();
-    
+
     //void update();
 
   private:
-  
+
     int pin;                              // используемый уровень
     int level = LOW;                      // активный уровень (LOW/HIGH)
 };
 
 #endif
-

@@ -11,4 +11,3 @@ void StateController::loop(State* state)
   Serial.println("state controller");
   for(;state;) state = state->execute();
 }
-

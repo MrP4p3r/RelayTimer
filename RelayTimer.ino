@@ -69,5 +69,3 @@ void printDateTime(const RtcDateTime& dt)
              dt.Second() );
   Serial.println(datestring);
 }
-
-

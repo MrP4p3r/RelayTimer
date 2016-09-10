@@ -1,11 +1,11 @@
 /*
  * Модуль содержит базовый класс состояния интерфейса
  * Состояние имеет две основных метода: setup и loop
- * 
+ *
  * Назначения методов аналогичны тем самым функциям setup и loop
  * с тем лишь замечанием, что loop не вызывается циклом, но
  * должен сам содержать цикл:
- * 
+ *
  * class MyState: public State{
  *   void setup(){
  *     pinMode(13,WRITE);
@@ -19,7 +19,7 @@
  *     }
  *     return NULL;
  *   }
- * 
+ *
  * Для корректной работы контроллера состояний (statectl.h)
  * метод loop() должен возвращать указатель на следующее состояние (или NULL).
  */
@@ -32,7 +32,7 @@ class State
   public:
     State() {};
     virtual State* execute();
-  
+
   private:
     virtual void setup() {};
     virtual State* loop() {};

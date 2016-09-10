@@ -9,4 +9,3 @@ State* State::execute()
   this->setup();
   return this->loop();
 }
-

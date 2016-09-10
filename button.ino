@@ -26,4 +26,3 @@ void Button::update()
     }
   } else counter = 0;
 }
-

@@ -29,7 +29,7 @@
 class Button
 {
   public:
-  
+
     Button(int _pin):
       pin(_pin) { pinMode(pin, INPUT); };
     Button(int _pin, int _level):
@@ -43,11 +43,11 @@ class Button
     void onButtonUp(void (*_foo)())      { onUp    = _foo; onUpArg   = NULL; };
     void onButtonDown(void (*_foo)(int), int _arg) { onDownArg = _foo; argDown = _arg; onDown = NULL; };
     void onButtonUp(void (*_foo)(int), int _arg)   { onUpArg   = _foo; argUp   = _arg; onUp   = NULL; };
-    
+
     void update();
 
   private:
-  
+
     int pin;                              // вывод, подключенный к кнопке
     int level = LOW;                      // активный уровень (LOW/HIGH)
     int nclocks = BUTTON_NCLOCKS_DEFAULT; // количество клоков для переключения состояния
@@ -59,10 +59,9 @@ class Button
 
     void (*onDownArg)(int);
     void (*onUpArg)(int);
-    
+
     int argDown = 0;
     int argUp = 0;
 };
 
 #endif
-
