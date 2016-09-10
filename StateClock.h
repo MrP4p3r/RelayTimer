@@ -1,8 +1,15 @@
+
+
 #ifndef STATECLOCK_H
 #define STATECLOCK_H
 
 class StateClock : public State
 {
+  private:
+
+    static byte nextState;
+    static byte hideDisplay;
+  
   public:
   
     StateClock()
@@ -20,18 +27,27 @@ class StateClock : public State
 
     static void b0action()
     {
-      kb.led_green->inv();
+      nextState = 1;
     }
 
     static void b2action()
     {
       relay.inv();
     }
+
+    static void b3action()
+    {
+      hideDisplay ^= 1;
+    }
     
   private:
 
     // SETUP FUNCTION
-    void setup() {}
+    void setup()
+    {
+      nextState = 0;
+      hideDisplay = 0;
+    }
 
     // LOOP FUNCTION
     State* loop()
@@ -45,5 +61,9 @@ class StateClock : public State
     }
 
 };
+
+
+byte StateClock::nextState = 0;
+byte StateClock::hideDisplay = 0;
 
 #endif
