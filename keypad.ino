@@ -1,6 +1,6 @@
 /*
- * Описание определений из "keyboard.h"
- */
+   Описание определений из "keyboard.h"
+*/
 
 #include "keypad.h"
 #include "button.h"
@@ -8,8 +8,7 @@
 
 Keypad* Keypad::instance()
 {
-  if (Keypad::_instance) return Keypad::_instance;
-  else return NULL;
+  return Keypad::_instance;
 }
 
 Keypad* Keypad::instance(int _b1_pin, int _b2_pin, int _b3_pin, int _b4_pin, int _led_red_pin, int _led_green_pin)
@@ -42,23 +41,19 @@ Keypad::Keypad(int _b1_pin, int _b2_pin, int _b3_pin, int _b4_pin, int _led_red_
 
 void Keypad::keyDown(int a)
 {
-  Serial.println("button is down");
-  Serial.println(a);
   Keypad* k = Keypad::_instance;
   if (!k->keyDownBuffer) k->keyDownBuffer = a;
 }
 
 void Keypad::keyUp(int a)
 {
-  Serial.println("button is up");
-  Serial.println(a);
   Keypad* k = Keypad::_instance;
   if (!k->keyUpBuffer) k->keyUpBuffer = a;
 }
 
 int Keypad::keyIsDown()
 {
-  return !(!keyDownBuffer);
+  return !(!this->keyDownBuffer);
 }
 
 int Keypad::keyIsUp()

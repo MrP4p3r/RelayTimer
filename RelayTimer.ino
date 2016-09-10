@@ -8,14 +8,14 @@
 #include "state.h"
 #include "statectl.h"
 
-Keypad kb = *Keypad::instance(7, 8, 9, 10, 11, 12);
+Keypad *kb = Keypad::instance(7, 8, 9, 10, 11, 12);
 Sig relay(6, HIGH);
 TM1637Display display(3, 4);
 RtcDS3231 Rtc;
 
 void displayTime(const RtcDateTime& dt);
+void displayNone();
 void printDateTime(const RtcDateTime& dt);
-void kb_update() { kb.update(); }
 
 #include "StateClock.h"
 
@@ -23,12 +23,13 @@ void setup()
 {
   // Setup
   Serial.begin(9600);
+  Serial.println((int)&kb);
   Rtc.Begin();
   while (!Serial);
 
   Serial.println("Hello!");
   Timer1.initialize(15000);
-  Timer1.attachInterrupt(kb_update);
+  Timer1.attachInterrupt(kb->update);
 
   // Вызов главного цикла
   StateController::loop(&StateClock());
@@ -52,6 +53,12 @@ void displayTime(const RtcDateTime& dt)
   display.setSegments(d);
 }
 
+void displayNone()
+{
+  uint8_t d[] = {0, 0, 0, 0};
+  display.setBrightness(0x0);
+  display.setSegments(d);
+}
 
 #define countof(a) (sizeof(a) / sizeof(a[0]))
 void printDateTime(const RtcDateTime& dt)
