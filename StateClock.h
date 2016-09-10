@@ -14,19 +14,24 @@ class StateClock : public State
 
     StateClock(): nextState(0) {};
 
-    void b0action()
+    void b1action()
     {
       nextState = NULL; // заменить на конструктор нового стейта позже
     }
 
     void b2action()
     {
-      relay.inv();
+      kb->ledGreen()->inv();
     }
 
     void b3action()
     {
-      hideDisplay ^= 1;
+      relay.inv();
+    }
+
+    void b4action()
+    {
+      hideDisplay = !hideDisplay;
     }
 
   private:
@@ -44,9 +49,23 @@ class StateClock : public State
       for (;;)
       {
         RtcDateTime A = Rtc.GetDateTime();
-        displayTime(A);
+        if (!hideDisplay) displayTime(A);
+        else displayNone();
         delay(100);
+
+        if (kb->keyIsDown())
+        {
+          int q = kb->getch();
+          switch (q)
+          {
+            case 1: b1action(); break;
+            case 2: b2action(); break;
+            case 3: b3action(); break;
+            case 4: b4action(); break;
+          }
+        }
       }
+      Serial.println("out of the loop");
     }
 
 };
