@@ -67,8 +67,8 @@ class Keypad
     static void keyUp(int a);
 
     // Кнопки, нажатая/отжатая в данный момент времени (или NULL)
-    int keyDownBuffer;
-    int keyUpBuffer;
+    int keyDownBuffer = 0;
+    int keyUpBuffer = 0;
 };
 
 #endif
