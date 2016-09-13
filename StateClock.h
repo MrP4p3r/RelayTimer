@@ -12,7 +12,7 @@ class StateClock : public State
 
     State* nextState;
     byte hideDisplay;
-    Config* config;
+    Config config;
 
   public:
 

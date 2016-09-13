@@ -25,25 +25,25 @@ typedef struct Config
 
 Config defaultConfig = {
   CONFIG_VERSION,
-  {  8, 00 },
+  {  8, 30 },
   { 20, 00 }
 };
 
-Config* loadConfig()
+Config loadConfig()
 {
-  Config* st;
+  Config st;
   EEPROM.get(CONFIG_ADDRESS, st);
-  if (st->version != CONFIG_VERSION)
+  if (st.version != CONFIG_VERSION)
   {
-    EEPROM.put(CONFIG_ADDRESS, &defaultConfig);
+    EEPROM.put(CONFIG_ADDRESS, defaultConfig);
     EEPROM.get(CONFIG_ADDRESS, st);
   }
   return st;
 }
 
-void saveConfig(const Config *st)
+void saveConfig(const Config &st)
 {
-  if (st->version == CONFIG_VERSION)
+  if (st.version == CONFIG_VERSION)
   {
     EEPROM.put(CONFIG_ADDRESS, st);
   }

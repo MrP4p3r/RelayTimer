@@ -30,10 +30,10 @@ void StateClock::setup()
   nextState = 0;
   hideDisplay = 0;
   config = loadConfig();
-  RtcDateTime dt1(0,0,0,config->T1.hour,config->T1.minute,1);
+  RtcDateTime dt1(0,0,0,config.T1.hour,config.T1.minute,1);
   displayTime(dt1);
   delay(3000);
-  RtcDateTime dt2(0,0,0,config->T2.hour,config->T2.minute,1);
+  RtcDateTime dt2(0,0,0,config.T2.hour,config.T2.minute,1);
   displayTime(dt2);
   delay(3000);
 }
