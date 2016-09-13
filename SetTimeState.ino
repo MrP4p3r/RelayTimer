@@ -2,7 +2,7 @@
 #include "myconf.h"
 
 #include "SetTimeState.h"
-#include "StateClock.h"
+#include "SettingsState.h"
 
 void SetTimeState::b1action() { substate--; }
 
@@ -57,7 +57,7 @@ void SetTimeState::setup()
   RtcDateTime A = Rtc.GetDateTime();
   hour = A.Hour();
   minute = A.Minute();
-  nextState = (State*)(new StateClock());
+  nextState = (State*)(new SettingsState());
 }
 
 // LOOP FUNCTION
