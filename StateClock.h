@@ -2,8 +2,9 @@
 #define STATECLOCK_H
 
 #include "myconf.h"
+#include "state.h"
 
-class SetTimeState;
+class State;
 
 class StateClock : public State
 {

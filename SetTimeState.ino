@@ -1,10 +1,8 @@
-/*
- *  Состояние предоставляет интерфейс для установки времени в формате 24h.
- */
+
+#include "myconf.h"
 
 #include "SetTimeState.h"
 #include "StateClock.h"
-#include "myconf.h"
 
 void SetTimeState::b1action() { substate--; }
 
@@ -99,7 +97,7 @@ State* SetTimeState::loop()
         }
       case 4:
         {
-          saveConfig();
+          save();
           return nextState;
         }
     }
@@ -117,7 +115,7 @@ State* SetTimeState::loop()
   }
 }
 
-void SetTimeState::saveConfig()
+void SetTimeState::save()
 {
   RtcDateTime A = Rtc.GetDateTime();
   RtcDateTime B(A.Year(), A.Month(), A.Day(), hour, minute, 0);

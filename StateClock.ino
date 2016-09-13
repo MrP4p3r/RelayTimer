@@ -1,10 +1,12 @@
-#include "StateClock.h"
-#include "SetTimeState.h"
+
 #include "myconf.h"
+
+#include "StateClock.h"
+#include "SettingsState.h"
 
 void StateClock::b1action()
 {
-  nextState = new SetTimeState();
+  nextState = new SettingsState();
 }
 
 void StateClock::b2action()

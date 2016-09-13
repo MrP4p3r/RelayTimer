@@ -5,13 +5,11 @@
 #ifndef SETTIMESTATE_H
 #define SETTIMESTATE_H
 
-#include "myconf.h"
-
 class StateClock;
 
 class SetTimeState : public State
 {
-  private:
+  protected:
 
     byte substate = 1;
 
@@ -33,12 +31,12 @@ class SetTimeState : public State
   private:
 
     // SETUP FUNCTION
-    void setup();
+    virtual void setup();
 
     // LOOP FUNCTION
     State* loop();
 
-    void saveConfig();
+    virtual void save();
 
 };
 
