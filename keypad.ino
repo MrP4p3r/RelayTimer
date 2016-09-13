@@ -64,7 +64,7 @@ int Keypad::keyIsUp()
 
 int Keypad::getch()
 {
-  while (!keyDownBuffer);
+  while (!keyDownBuffer) delay(0); // без пустого тела цикла не работает
   int res = keyDownBuffer;
   keyDownBuffer = NULL;
   return res;
@@ -73,7 +73,7 @@ int Keypad::getch()
 
 int Keypad::getchUp()
 {
-  while (!keyUpBuffer);
+  while (!keyUpBuffer) delay(0);
   int res = keyUpBuffer;
   keyUpBuffer = NULL;
   return res;
