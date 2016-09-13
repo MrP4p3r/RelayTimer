@@ -2,6 +2,8 @@
 #include "SettingsState.h"
 #include "StateClock.h"
 #include "SetTimeState.h"
+#include "SetT1State.h"
+#include "SetT2State.h"
 
 // SETUP FUNCTION
 void SettingsState::setup()
@@ -28,8 +30,8 @@ State* SettingsState::loop()
     {
       case 1: return new StateClock(); break;
       case 2: return new SetTimeState(); break;
-      case 3: break;
-      case 4: break;
+      case 3: return new SetT1State(); break;
+      case 4: return new SetT2State(); break;
     }
   }
 }
