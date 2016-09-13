@@ -15,16 +15,16 @@ void SetTimeState::b4action()
   {
     case 1:
       // hour
-      hour++;
+      hour = (hour + 1) % 24;
       break;
     case 2:
       // minute tens
-      if (minute == 50) hour++;
+      if (minute >= 50) hour = (hour + 1) % 24;;
       minute = (minute + 10) % 60;
       break;
     case 3:
       // minute ones
-      if (minute == 59) hour++;
+      if (minute == 59) hour = (hour + 1) % 24;;
       minute = (minute + 1) % 60;
       break;
   }
@@ -40,12 +40,12 @@ void SetTimeState::b3action()
       break;
     case 2:
       // minute tens
-      if (minute == 0) hour--;
+      if (minute <= 9) hour = (hour + 23) % 24;
       minute = (minute + 50) % 60;
       break;
     case 3:
       // set minute ones
-      if (minute == 0) hour--;
+      if (minute == 0) hour = (hour + 23) % 24;;
       minute = (minute + 59) % 60;
       break;
   }
