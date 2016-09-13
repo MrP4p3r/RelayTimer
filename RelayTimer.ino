@@ -53,6 +53,20 @@ void displayTime(const RtcDateTime& dt)
   display.setSegments(d);
 }
 
+void displayTimeSet(const RtcDateTime& dt, byte mask)
+{
+  uint8_t d[] = {0, 0, 0, 0};
+  bool blink = millis()/600%2;
+  d[3] = (mask&1 || blink) ? display.encodeDigit(dt.Minute() % 10) : 0;
+  d[2] = (mask&2 || blink) ? display.encodeDigit(dt.Minute() / 10) : 0;
+  d[1] = (mask&4 || blink) ? display.encodeDigit(dt.Hour() % 10) : 0;
+  d[0] = (mask&8 || blink) ? display.encodeDigit(dt.Hour() / 10) : 0;
+  d[1] |= 1 << 7;
+
+  display.setBrightness(0x0f);
+  display.setSegments(d);
+}
+
 void displayNone()
 {
   uint8_t d[] = {0, 0, 0, 0};
