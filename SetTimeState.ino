@@ -10,7 +10,7 @@ void SetTimeState::b1action() { substate--; }
 
 void SetTimeState::b2action() { substate++; }
 
-void SetTimeState::b3action()
+void SetTimeState::b4action()
 {
   // увеличить время
   switch (substate)
@@ -32,7 +32,7 @@ void SetTimeState::b3action()
   }
 }
 
-void SetTimeState::b4action()
+void SetTimeState::b3action()
 {
   switch (substate)
   {
