@@ -13,6 +13,7 @@ class StateClock : public State
     State* nextState;
     byte hideDisplay;
     Config config;
+    bool relaySwitched;
 
   public:
 
