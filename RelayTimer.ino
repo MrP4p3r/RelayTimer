@@ -1,3 +1,5 @@
+#include "globals.h"
+
 #include <TimerOne.h>
 
 #include <RtcDS3231.h>

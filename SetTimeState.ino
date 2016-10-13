@@ -1,3 +1,4 @@
+#include "globals.h"
 
 #include "myconf.h"
 

@@ -1,3 +1,4 @@
+#include "globals.h"
 
 #include "SettingsState.h"
 #include "StateClock.h"
