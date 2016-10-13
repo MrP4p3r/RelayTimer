@@ -9,5 +9,10 @@ void StateController::loop(State* state)
 {
   // Пока укзатель на state ненулевой
   Serial.println("state controller");
-  for(;state;) state = state->execute();
+  State* next;
+  for(;state;) {
+    next = state->execute();
+    delete state;
+    state = next;
+  }
 }
